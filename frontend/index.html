@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Task Manager</h1>
+
+        <!-- Add Task Form -->
+        <div class="add-task">
+            <input type="text" id="taskInput" placeholder="Enter a new task">
+            <button type="button" onclick="addTask()">Add Task</button>
+        </div>
+
+        <!-- Error Display -->
+        <div id="error" class="error"></div>
+
+        <!-- Statistics -->
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-number" id="total">0</div>
+                <div>Total</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number" id="completed">0</div>
+                <div>Completed</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number" id="pending">0</div>
+                <div>Pending</div>
+            </div>
+        </div>
+
+        <!-- Tasks Table -->
+        <div class="tasks-section">
+            <h3>Tasks</h3>
+            <table id="tasksTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Task</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="tasksBody">
+                    <tr>
+                        <td colspan="4" class="loading">Loading tasks...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

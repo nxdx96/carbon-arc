@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_ENV=development
+  
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:80"  # Map host port 3000 to container port 80 (nginx)
+    depends_on:
+      - backend
