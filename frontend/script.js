@@ -4,6 +4,9 @@ document.addEventListener('DOMContentLoaded', function() {
     loadTasks();
     loadStats();
     
+    // Add this event listener
+    document.getElementById('addTaskBtn').addEventListener('click', addTask);
+    
     document.getElementById('taskInput').addEventListener('keypress', function(e) {
         if (e.key === 'Enter') {
             addTask();
@@ -87,6 +90,8 @@ async function addTask() {
             },
             body: JSON.stringify({ title: title })
         });
+
+        
 
         // on success, clear input and refresh tasks and stats
         if (response.ok) {
