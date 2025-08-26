@@ -3,60 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task Manager</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Task Management App</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>Task Manager</h1>
-
+        <h1>Task Management</h1>
+        
         <!-- Add Task Form -->
-        <div class="add-task">
-            <input type="text" id="taskInput" placeholder="Enter a new task">
-            <button type="button" onclick="addTask()">Add Task</button>
+        <div class="add-task-section">
+            <h2>Add New Task</h2>
+            <form id="add-task-form">
+                <input type="text" id="task-title" placeholder="Enter task title..." required>
+                <button type="submit">Add Task</button>
+            </form>
         </div>
 
-        <!-- Error Display -->
-        <div id="error" class="error"></div>
-
-        <!-- Statistics -->
-        <div class="stats">
-            <div class="stat">
-                <div class="stat-number" id="total">0</div>
-                <div>Total</div>
-            </div>
-            <div class="stat">
-                <div class="stat-number" id="completed">0</div>
-                <div>Completed</div>
-            </div>
-            <div class="stat">
-                <div class="stat-number" id="pending">0</div>
-                <div>Pending</div>
+        <!-- Statistics Section -->
+        <div class="stats-section">
+            <h2>Statistics</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-label">Total:</span>
+                    <span id="total-tasks" class="stat-value">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Completed:</span>
+                    <span id="completed-tasks" class="stat-value">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Pending:</span>
+                    <span id="pending-tasks" class="stat-value">0</span>
+                </div>
             </div>
         </div>
 
-        <!-- Tasks Table -->
+        <!-- Tasks List -->
         <div class="tasks-section">
-            <h3>Tasks</h3>
-            <table id="tasksTable">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Task</th>
-                        <th>Status</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody id="tasksBody">
-                    <tr>
-                        <td colspan="4" class="loading">Loading tasks...</td>
-                    </tr>
-                </tbody>
-            </table>
+            <h2>Tasks</h2>
+            <div id="tasks-list" class="tasks-list">
+                <!-- Tasks will be dynamically loaded here -->
+            </div>
+            <div id="no-tasks-message" class="no-tasks" style="display: none;">
+                No tasks yet. Add your first task above!
+            </div>
         </div>
+
+        <!-- Loading indicator -->
+        <div id="loading" class="loading" style="display: none;">Loading...</div>
+        
+        <!-- Error message -->
+        <div id="error-message" class="error" style="display: none;"></div>
     </div>
 
-    <script src="script.js"></script>
-    <button onclick="addTask()">Add Task</button>
+    <script src="app.js"></script>
 </body>
 </html>

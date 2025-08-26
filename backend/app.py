@@ -44,9 +44,16 @@ def create_task():
     # create a new task
     data = request.get_json()
 
-    # make sure title is provided
-    if not data or 'title' not in data or not data['title'].strip():
-        return jsonify({'error': 'Title is required'}), 400
+    # Validate JSON payload
+    if not data:
+        return jsonify({'error': 'Invalid JSON payload'}), 400
+    
+    # Validate title field
+    if 'title' not in data:
+        return jsonify({'error': 'Title field is required'}), 400
+    
+    if not isinstance(data['title'], str) or not data['title'].strip():
+        return jsonify({'error': 'Title must be a non-empty string'}), 400
     
     global task_id
     task = {
@@ -62,8 +69,11 @@ def create_task():
 
 @app.route('/tasks/<id>/complete', methods=['PUT'])
 def complete_task(id):
-    # mark a task as completed
-    task_id_int = int(id)
+    try:
+        task_id_int = int(id)
+    except ValueError:
+        return jsonify({'error': 'Invalid task ID format'}), 400
+    
     if task_id_int not in tasks:
         return jsonify({'error': 'Task not found'}), 404
     
@@ -73,8 +83,11 @@ def complete_task(id):
 
 @app.route('/tasks/<id>', methods=['DELETE'])
 def delete_task(id):
-    # delete a task
-    task_id_int = int(id)
+    try:
+        task_id_int = int(id)
+    except ValueError:
+        return jsonify({'error': 'Invalid task ID format'}), 400
+    
     if task_id_int not in tasks:
         return jsonify({'error': 'Task not found'}), 404
     
@@ -98,9 +111,10 @@ def get_stats():
     
 
 if __name__ == '__main__':
+    # Initialize with sample data for testing
     tasks[1] = {'id': 1, 'title': 'Test Title 1', 'completed': False}
     tasks[2] = {'id': 2, 'title': 'Testing Title 2', 'completed': True}
     task_id = 3
     
-    print("Start API on port 5001...")
+    print("Starting Flask API on port 5001...")
     app.run(host='0.0.0.0', port=5001, debug=True)

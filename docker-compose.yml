@@ -2,15 +2,34 @@ version: '3.8'
 
 services:
   backend:
-    build: ./backend
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: task-management-backend
     ports:
       - "5001:5001"
     environment:
       - FLASK_ENV=development
-  
+      - FLASK_DEBUG=1
+    volumes:
+      - ./backend:/app
+    networks:
+      - task-network
+    restart: unless-stopped
+
   frontend:
-    build: ./frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: task-management-frontend
     ports:
-      - "3000:80"  # Map host port 3000 to container port 80 (nginx)
+      - "3000:3000"
     depends_on:
       - backend
+    networks:
+      - task-network
+    restart: unless-stopped
+
+networks:
+  task-network:
+    driver: bridge
