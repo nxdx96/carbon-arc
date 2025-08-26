@@ -1,5 +1,9 @@
 # Task Manager Application
 
+----- CORRECT UI -------
+
+<img width="1870" height="884" alt="Screenshot 2025-08-26 123841" src="https://github.com/user-attachments/assets/c290c3e0-0bcb-4e31-9003-d1c0fc8bac16" />
+
 A simple task management web application built with Flask (backend) and vanilla HTML/CSS/JavaScript (frontend).
 
 ## Features
