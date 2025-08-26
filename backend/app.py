@@ -44,11 +44,9 @@ def create_task():
     # create a new task
     data = request.get_json()
 
-    # Validate JSON payload
     if not data:
         return jsonify({'error': 'Invalid JSON payload'}), 400
     
-    # Validate title field
     if 'title' not in data:
         return jsonify({'error': 'Title field is required'}), 400
     

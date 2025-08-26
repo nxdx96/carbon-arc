@@ -1,6 +1,5 @@
 class TaskManager {
     constructor() {
-        // Use localhost for development, can be changed to backend service name if needed
         this.apiUrl = 'http://localhost:5001';
         this.init();
     }
@@ -48,7 +47,7 @@ class TaskManager {
         try {
             const tasks = await this.apiCall('/tasks');
             this.renderTasks(tasks);
-            this.loadStats(); // Update stats after loading tasks
+            this.loadStats(); 
         } catch (error) {
             console.error('Error loading tasks:', error);
         }
@@ -162,7 +161,6 @@ class TaskManager {
         errorElement.textContent = message;
         errorElement.style.display = 'block';
         
-        // Auto-hide error after 5 seconds
         setTimeout(() => this.hideError(), 5000);
     }
 
@@ -177,7 +175,6 @@ class TaskManager {
     }
 }
 
-// Initialize the app when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     window.taskManager = new TaskManager();
 });
