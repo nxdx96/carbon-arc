@@ -1,4 +1,4 @@
-# Task Manager Application
+# Task Management App
 
 ----- CORRECT UI WITH TEST CASES -------
 
@@ -8,64 +8,64 @@ A simple task management web application built with Flask (backend) and vanilla 
 
 ## Features
 
-- Create new tasks
-- Mark tasks as completed
-- Delete tasks
+- Create, complete, and delete tasks
 - View task statistics (total, completed, pending)
-- Real-time task management with a clean web interface
+- Clean, responsive web interface
+- Dockerized environment
+
+## Quick Start
+
+1. Clone the repository
+2. Navigate to the project directory
+3. Run with Docker Compose:
+
+   ```bash
+   docker-compose up --build
+   ```
+
+4. Access the application:
+   - Frontend: http://localhost:3000
+   - Backend API: http://localhost:5001
+
+## API Endpoints
+
+- `GET /tasks` - Get all tasks
+- `POST /tasks` - Create a new task
+- `PUT /tasks/<id>/complete` - Mark task as completed
+- `DELETE /tasks/<id>` - Delete a task
+- `GET /tasks/stats` - Get task statistics
+
+## Development
+
+### Backend (Flask)
+
+- Port: 5001
+- Location: `./backend/`
+- Dependencies: Flask, flask-cors
+
+### Frontend (Vanilla JS)
+
+- Port: 3000
+- Location: `./frontend/`
+- Served via nginx
 
 ## Project Structure
 
 ```
 carbon-arc/
 ├── backend/
-│   ├── app.py              # Flask API server
-│   ├── requirements.txt    # Python dependencies
-│   ├── Dockerfile         # Backend Docker configuration
-│   
+│   ├── app.py
+│   ├── requirements.txt
+│   └── Dockerfile
 ├── frontend/
-│   ├── index.html         # Main web interface
-│   
-│   ├── style.css          
-│   ├── script.js          
-│   ├── templates/         
-│   └── Dockerfile         
-└── docker-compose.yml    
+│   ├── index.html
+│   ├── styles.css
+│   ├── app.js
+│   ├── nginx.conf
+│   └── Dockerfile
+├── docker-compose.yml
+└── README.md
 ```
-
-## API Endpoints
-
-- `GET /` - Serve the web interface
-- `GET /tasks` - Get all tasks
-- `POST /tasks` - Create a new task
-- `PUT /tasks/<id>/complete` - Mark a task as completed
-- `DELETE /tasks/<id>` - Delete a task
-- `GET /tasks/stats` - Get task statistics
-
-## Quick Start
-
-### Option 1: Run with Python directly
-
-1. **Install dependencies:**
-   ```bash
-   cd backend
-   pip install -r requirements.txt
-   ```
-
-2. **Run the application:**
-   ```bash
-   python app.py
-   ```
-
-3. **Access the application:**
-   Open your browser and go to `http://127.0.0.1:5001`
-
-### Option 2: Run with Docker Compose
-
-1. **Build and run:**
-   ```bash
-   docker-compose up --build
-   ```
 
 2. **Access the application:**
    Open your browser and go to `http://localhost:5000`
